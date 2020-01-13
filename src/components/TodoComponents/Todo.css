@@ -2,7 +2,6 @@
     text-decoration: none;
 }
 
-.task.completed {
-    background-color: #d17d7c;
+ .completed {
     text-decoration: line-through;
   }
