@@ -46,10 +46,24 @@ class App extends React.Component {
 
       }
     }
+    
+  clearCompleted = () => {
+    const updated = this.state.taskList.filter(task =>
+       task.completed === false
+    )
+    console.log(updated, "updated")
+  this.setState({
+    taskList: updated
+  })
+  console.log(this.state.taskList)
+}
+  
 
   toggleTask = id => {
     const newTaskList = this.state.taskList.map(task => {
+      console.log(task)
       if (task.id === id) {
+        
         return {
           ...task,
           completed: !task.completed
@@ -77,14 +91,14 @@ class App extends React.Component {
   };
   render() {
     console.log("rendering...");
-
+    console.log(taskList);
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addTask={this.addTask}/>
+        <TodoForm addTask={this.addTask} clearCompleted={this.clearCompleted}/>
         <TaskList
           taskList={this.state.taskList}
-          toggleTask={this.toggleTask}/>
+          toggleTask={this.toggleTask} clearCompleted={this.clearCompleted}/>
       </div>
     );
   }
